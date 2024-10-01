@@ -30,48 +30,256 @@ The system operates by sending out ultrasonic waves using the ultrasonic sensor.
 
 3. **Alarm Triggering**: When an object is detected within the defined range, the microcontroller activates the buzzer or alarm, alerting the user of potential intrusion.
 
-## Circuit Diagram
-
-![blob:https://web.whatsapp.com/c1f8d499-d838-4453-9c7a-f11ed3afe1a1)
 
 ## Code
 
-```cpp
-// Define pins for ultrasonic sensor
-const int trigPin = 9;
-const int echoPin = 10;
-const int buzzerPin = 11; // Pin for the buzzer
+const int trig = 12;
+const int echo = 13;
+const int Buzz = 8;
+const int LED2 = 7;
+const int LED3 = 6;
+const int LED4 = 5;
+const int LED5 = 4;
+const int LED6 = 3;
+const int LED7 = 2;
+int duration = 0;
+int distance = 0;
+int offTimeDelay=125;
+int onTimeDelay=150;
 
-void setup() {
-  pinMode(trigPin, OUTPUT);
-  pinMode(echoPin, INPUT);
-  pinMode(buzzerPin, OUTPUT);
-  Serial.begin(9600); // Start the serial communication
+void setup() 
+{
+Serial.begin(9600);
+  pinMode(trig , OUTPUT);
+
+  pinMode(echo , INPUT);
+
+  pinMode(Buzz , OUTPUT);
+  pinMode(LED2 , OUTPUT);
+  pinMode(LED3 , OUTPUT);
+  pinMode(LED4 , OUTPUT);
+  pinMode(LED5 , OUTPUT);
+  pinMode(LED6 , OUTPUT);
+  pinMode(LED7 , OUTPUT);
+
 }
+void loop()
+{
+  digitalWrite(trig , HIGH);
+  delayMicroseconds(1000);
+  digitalWrite(trig , LOW);
 
-void loop() {
-  // Send ultrasonic pulse
-  digitalWrite(trigPin, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
+  duration = pulseIn(echo , HIGH);
 
-  // Measure the pulse width of echoPin
-  long duration = pulseIn(echoPin, HIGH);
-  
-  // Calculate the distance
-  int distance = duration * 0.034 / 2; // Distance in cm
+  distance = (duration/2) / 28.5 ;
 
-  if (distance < 20) { // Trigger the alarm if object is closer than 20 cm
-    digitalWrite(buzzerPin, HIGH);
-  } else {
-    digitalWrite(buzzerPin, LOW);
-  }
-
-  // Print distance to the Serial Monitor
-  Serial.print("Distance: ");
   Serial.println(distance);
 
-  delay(100); // Small delay to avoid overwhelming the sensor
+  if ( distance <= 7 )
+  {
+    digitalWrite(Buzz, HIGH);
+    
+    digitalWrite(Buzz, HIGH);
+    digitalWrite(LED2,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED3,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED4,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED5,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED6,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED7,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(Buzz,LOW);
+    delay(onTimeDelay);
+
+    digitalWrite(Buzz, HIGH);
+    digitalWrite(LED2,HIGH);
+    delay(offTimeDelay);
+    digitalWrite(LED3,LOW);
+    delay(onTimeDelay);
+    digitalWrite(LED4,HIGH);
+    delay(offTimeDelay);
+    digitalWrite(LED5,LOW);
+    delay(onTimeDelay);
+    digitalWrite(LED6,HIGH);
+    delay(offTimeDelay);
+    digitalWrite(LED7,LOW);
+    delay(onTimeDelay);
+    digitalWrite(Buzz,LOW);
+    delay(onTimeDelay);
+
+    digitalWrite(Buzz, HIGH);
+    digitalWrite(LED2,LOW);
+    delay(offTimeDelay);
+    digitalWrite(LED3,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED4,LOW);
+    delay(offTimeDelay);
+    digitalWrite(LED5,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED6,LOW);
+    delay(offTimeDelay);
+    digitalWrite(LED7,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(Buzz,LOW);
+    delay(onTimeDelay);
+
+    digitalWrite(Buzz, HIGH);
+    digitalWrite(LED2,LOW);
+    delay(offTimeDelay);
+    digitalWrite(LED7,LOW);
+    delay(offTimeDelay);
+    digitalWrite(LED3,LOW);
+    delay(offTimeDelay);
+    digitalWrite(LED6,LOW);
+    delay(offTimeDelay);
+    digitalWrite(LED4,LOW);
+    delay(offTimeDelay);
+    digitalWrite(LED5,LOW);
+    delay(offTimeDelay);
+
+
+    digitalWrite(Buzz, HIGH);
+    digitalWrite(LED2,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED7,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED3,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED6,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED5,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED6,HIGH);
+    delay(onTimeDelay);
+
+
+    
+    digitalWrite(Buzz, HIGH);
+    digitalWrite(LED2,LOW);
+    delay(offTimeDelay);
+    digitalWrite(LED2,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED3,LOW);
+    delay(offTimeDelay);
+    digitalWrite(LED3,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED4,LOW);
+    delay(offTimeDelay);
+    digitalWrite(LED4,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED5,LOW);
+    delay(offTimeDelay);
+    digitalWrite(LED5,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED6,LOW);
+    delay(offTimeDelay);
+    digitalWrite(LED6,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED7,LOW);
+    delay(offTimeDelay);
+    digitalWrite(LED7,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(Buzz,LOW);
+    delay(offTimeDelay);
+
+
+    digitalWrite(Buzz, HIGH);
+    digitalWrite(LED2,LOW);
+    digitalWrite(LED3,LOW);
+    delay(offTimeDelay);
+    digitalWrite(LED4,LOW);
+    digitalWrite(LED5,LOW);
+    delay(offTimeDelay);
+    digitalWrite(LED6,LOW);
+    digitalWrite(LED7,LOW);
+    delay(offTimeDelay);
+    digitalWrite(Buzz,LOW);
+    delay(offTimeDelay);
+
+    digitalWrite(Buzz, HIGH);
+    digitalWrite(LED2,HIGH);
+    digitalWrite(LED3,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED4,HIGH);
+    digitalWrite(LED5,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(LED6,HIGH);
+    digitalWrite(LED7,HIGH);
+    delay(onTimeDelay);
+    digitalWrite(Buzz,LOW);
+    delay(onTimeDelay);
+
+
+     
+  }
+  else
+  {
+    digitalWrite(Buzz, LOW);
+  }
+  
+
+  if ( distance <= 14 )
+  {
+    digitalWrite(LED2, HIGH);
+  }
+  else
+  {
+    digitalWrite(LED2, LOW);
+  }
+
+  
+  if ( distance <= 21 )
+  {
+    digitalWrite(LED3, HIGH);
+  }
+  else
+  {
+    digitalWrite(LED3, LOW);
+  }
+
+
+
+  if ( distance <= 28 )
+  {
+    digitalWrite(LED4, HIGH);
+  }
+  else
+  {
+    digitalWrite(LED4, LOW);
+
+  }
+
+  
+  if ( distance <= 35 )
+  {
+    digitalWrite(LED5, HIGH);
+  }
+  else
+  {
+    digitalWrite(LED5, LOW);
+  }
+
+  
+  if ( distance <= 42 )
+  {
+    digitalWrite(LED6, HIGH);
+  }
+  else
+  {
+    digitalWrite(LED6, LOW);
+  }
+
+  
+  if ( distance <= 49 )
+  {
+    digitalWrite(LED7, HIGH); 
+  }
+  else
+  {
+     digitalWrite(LED7, LOW);
+  }
 }
