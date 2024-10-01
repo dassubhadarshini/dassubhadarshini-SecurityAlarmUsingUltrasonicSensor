@@ -32,7 +32,7 @@ The system operates by sending out ultrasonic waves using the ultrasonic sensor.
 
 ## Circuit Diagram
 
-![Ultrasonic Security Alarm Circuit](https://example.com/path/to/circuit-diagram.png) *(Replace this link with an actual image link)*
+![blob:https://web.whatsapp.com/c1f8d499-d838-4453-9c7a-f11ed3afe1a1)
 
 ## Code
 
