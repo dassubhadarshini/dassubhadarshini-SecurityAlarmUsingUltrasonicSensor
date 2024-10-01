@@ -30,6 +30,7 @@ The system operates by sending out ultrasonic waves using the ultrasonic sensor.
 
 3. **Alarm Triggering**: When an object is detected within the defined range, the microcontroller activates the buzzer or alarm, alerting the user of potential intrusion.
 
+![WhatsApp Image 2024-10-02 at 12 41 24 AM](https://github.com/user-attachments/assets/5e938f0a-9e1e-48c6-884e-136d3c27228a)
 
 ## Code
 
